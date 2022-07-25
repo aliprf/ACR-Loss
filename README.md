@@ -1,10 +1,22 @@
-# ACR-Loss
+# [ACR-Loss](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=96lS6HIAAAAJ&citation_for_view=96lS6HIAAAAJ:eQOLeE2rZwMC)
+
+### Accepted in ICPR 2022
 ACR Loss: Adaptive Coordinate-based Regression Loss for Face Alignment
 
 #### Link to the paper:
 https://arxiv.org/pdf/2203.15835.pdf
 
 
+```
+Please cite this work as:
+
+@article{fard2022acr,
+  title={ACR Loss: Adaptive Coordinate-based Regression Loss for Face Alignment},
+  author={Fard, Ali Pourramezan and Mahoor, Mohammah H},
+  journal={arXiv preprint arXiv:2203.15835},
+  year={2022}
+}
+```
 
 ## Introduction
 
