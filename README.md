@@ -37,9 +37,7 @@ The requirements and the libraries needed to run the code can be installed using
 
 
 ## Using the pre-trained models
-You can test and use the preetrained models using the following codes which are available in the following file:
-  https://github.com/aliprf/ASMNet/blob/master/main.py
-  
+You can test and use the preetrained models using the following codes:  
 ```
  tester = Test()
     tester.test_model(ds_name=DatasetName.w300,
