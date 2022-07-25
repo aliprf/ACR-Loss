@@ -1,0 +1,18 @@
+numpy
+
+# Mac M1:
+tensorflow-macos
+#linux
+# tensorflow
+
+keras
+matplotlib
+opencv-python
+opencv-contrib-python
+scipy
+scikit-learn
+scikit-image
+Pillow
+tqdm
+efficientnet
+tensorboard
