@@ -41,7 +41,7 @@ You can test and use the preetrained models using the following codes:
 ```
  tester = Test()
     tester.test_model(ds_name=DatasetName.w300,
-                      pretrained_model_path='./pre_trained_models/ACRLoss/mnv2.h5')
+                      pretrained_model_path='./pre_trained_models/ACRLoss/300w/EF_3/300w_EF3_ACRLoss.h5')
 
 ```
 
