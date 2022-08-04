@@ -7,7 +7,9 @@ ACR Loss: Adaptive Coordinate-based Regression Loss for Face Alignment
 https://arxiv.org/pdf/2203.15835.pdf
 
 
+```diff
 @@plaese STAR the repo if you like it.@@
+```
 
 ```
 Please cite this work as:
