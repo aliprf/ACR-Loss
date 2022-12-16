@@ -15,12 +15,15 @@ https://ieeexplore.ieee.org/document/9956683
 ```
 Please cite this work as:
 
-@article{fard2022acr,
-  title={ACR Loss: Adaptive Coordinate-based Regression Loss for Face Alignment},
-  author={Fard, Ali Pourramezan and Mahoor, Mohammah H},
-  journal={arXiv preprint arXiv:2203.15835},
-  year={2022}
-}
+@INPROCEEDINGS{9956683,
+  author={Fard, Ali Pourramezan and Mahoor, Mohammah H.},
+  booktitle={2022 26th International Conference on Pattern Recognition (ICPR)}, 
+  title={ACR Loss: Adaptive Coordinate-based Regression Loss for Face Alignment}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={1807-1814},
+  doi={10.1109/ICPR56361.2022.9956683}}
 ```
 
 ![Samples](https://github.com/aliprf/ACR-Loss/blob/main/img/ACR_300w_samples.png?raw=true)
