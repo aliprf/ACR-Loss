@@ -3,7 +3,8 @@ numpy
 # Mac M1:
 tensorflow-macos
 #linux
-# tensorflow
+
+tensorflow== 2.6
 
 keras
 matplotlib
