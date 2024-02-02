@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACR-Loss</title>
+    <style>
+         body {
+            font-family: 'Arial', sans-serif;
+            background-color: #F1F1F1;
+            color: #E8F9FD;
+            margin: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #6D2932;
+        }
+
+
+        #main-content {
+             max-width: 1200px;
+            margin: auto;
+            margin-top:20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+        }
+        code {
+            background-color: #DAEAF1; /* Dark Gray Code Background */
+            border: 1px solid #F0F0F0; /* Border Color */
+            border-left: 3px solid #D61C4E; /* Accent Color */
+            color: #513252; /* Light Code Text Color */
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            overflow-x: auto;
+        }
+
+        pre {
+            overflow: auto;
+        }
+
+        img {
+            display: block;
+            margin: 0 auto;
+            max-width: 70%;
+            height: auto;
+        }
+
+        blockquote {
+            background: #2d2d2d; /* Darker Gray for Blockquote */
+            border-left: 10px solid #FC6736;
+            margin: 1.5em 10px;
+            padding: 0.5em 10px;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #860A35;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #820000; /* Light Text Color for Heading */
+        }
+
+        h2 {
+            font-size: 2.5em;
+            color: #B9005B; /* Light Text Color for Heading */
+        }
+
+        h3 {
+            font-size: 2em;
+            color: #E64848; /* Light Text Color for Heading */
+        }
+
+        h4 {
+            font-size: 1.8em;
+            color: #436850; /* Light Text Color for Heading */
+        }
+
+        h5 {
+            font-size: 1.5em;
+            color: #436850; /* Light Text Color for Heading */
+        }
+
+        h6 {
+            font-size: 1.2em;
+            color: #436850; /* Light Text Color for Heading */
+        }
+
+        strong {
+            color: #436850;
+        }
+
+        a {
+            color: #40A2E3;
+            transition: color 0.5s;
+        }
+
+        a:hover {
+            color: #f45026;
+        }
+
+  p {
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+  <header>
+        <h1>ACR Loss: Adaptive Coordinate-based Regression Loss for Face Alignment</h1>
+    </header>
+
+     <div id="main-content">
+    <h2>Introduction</h2>
+         
+  <p> 
+Although deep neural networks have achieved reasonable accuracy in solving face alignment, it is still a challenging task, specifically when we deal with facial images, under occlusion, or extreme head poses. Heatmap-based Regression (HBR) and Coordinate-based Regression (CBR) are among the two mainly used methods for face alignment. CBR methods require less computer memory, though their performance is less than HBR methods. In this paper, we propose an Adaptive Coordinatebased Regression (ACR) loss to improve the accuracy of CBR for face alignment. Inspired by the Active Shape Model (ASM), we generate Smooth-Face objects, a set of facial landmark points with less variations compared to the ground truth landmark points. We then introduce a method to estimate the level of difficulty in predicting each landmark point for the network by comparing the distribution of the ground truth landmark points
+and the corresponding Smooth-Face objects. Our proposed ACR Loss can adaptively modify its curvature and the influence of the loss based on the difficulty level of predicting each landmark point in a face. Accordingly, the ACR Loss guides the network toward challenging points than easier points, which improves the accuracy of the face alignment task. Our extensive evaluation shows the capabilities of the proposed ACR Loss in predicting facial landmark points in various facial images.
+</p>
+ <p> 
+We evaluated our ACR Loss using MobileNetV2, EfficientNetB0, and EfficientNet-B3 on widely used 300W, and COFW datasets and showed that the performance of face alignment using the ACR Loss is much better than the widely-used L2 loss. Moreover, on the COFW dataset, we achieved state-of-theart accuracy. In addition, on 300W the ACR Loss performance is comparable to the state-of-the-art methods. We also compared the performance of MobileNetV2 trained using the ACR Loss with the lightweight state-of-the-art methods, and we achieved the best accuracy, highlighting the effectiveness of our ACR Loss for face alignment specifically for the lightweight models.
+ 
+</p>
+
+    <img src="https://github.com/aliprf/ACR-Loss/blob/main/img/Screenshot from 2024-02-02 13-06-58.png?raw=true" alt="Sample All">
+    
+            
+        
+</div>
+
+<div id="main-content">
+    <h2>Installing the requirements</h2>
+    
+     <p> In order to run the code you need to install python >= 3.5. The requirements and the libraries needed to run the code can be installed using the following command: </p>
+     
+     <pre>
+        <code>
+	pip install -r requirements.txt
+        </code>
+    </pre>
+    
+</div>
+    
+
+
+
+<div id="main-content">
+    <h2>Using the pre-trained models</h2>
+    
+     <p> You can test and use the preetrained models using the following codes:</p>
+     
+     <pre>
+        <code>
+	tester = Test()
+    	tester.test_model(ds_name=DatasetName.w300, pretrained_model_path='./pre_trained_models/ACRLoss/300w/EF_3/300w_EF3_ACRLoss.h5')
+        </code>
+    </pre>
+</div>
+
+
+
+<div id="main-content">
+    <h2>Training Network from scratch</h2>
+    
+	<h3>Preparing Data</h3>
+
+		<p> Data needs to be normalized and saved in npy format.</p>
+     
+	<h3>PCA creation</h3>
+		<p> you can you the pca_utility.py class to create the eigenvalues, eigenvectors, and the meanvector:</p>
+         
+	     <pre>
+		<code>
+		pca_calc = PCAUtility()
+		pca_calc.create_pca_from_npy(dataset_name=DatasetName.w300, labels_npy_path='./data/w300/normalized_labels/', pca_percentages=90)
+		</code>
+	    </pre>
+
+	<h3>Training</h3>
+		<p> The training implementation is located in train.py class. You can use the following code to start the training:</p>
+         
+	     <pre>
+		<code>
+		 trainer = Train(arch=ModelArch.MNV2, dataset_name=DatasetName.w300, save_path='./')
+		</code>
+	    </pre>
+	    
+	            <img src="https://github.com/aliprf/ACR-Loss/blob/main/img/ACR_300w_samples.png?raw=true" alt="Sample All">
+    
+</div>
+
+
+
+
+<div id="main-content">
+   
+
+    <h3>Reference:</h3>
+
+    <pre>
+        <code>
+@INPROCEEDINGS{9956683,
+  author={Fard, Ali Pourramezan and Mahoor, Mohammah H.},
+  booktitle={2022 26th International Conference on Pattern Recognition (ICPR)}, 
+  title={ACR Loss: Adaptive Coordinate-based Regression Loss for Face Alignment}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={1807-1814},
+  doi={10.1109/ICPR56361.2022.9956683}}
+        </code>
+    </pre>
+
+ </div>
+
+
+
+   <div id="main-content">
+    <ul>
+       <li><strong>Link to the Github:</strong> <a href="https://github.com/aliprf/ACR-Loss/">https://github.com/aliprf/ACR-Loss/</a></li> 
+       <li><strong>Link to the paper:</strong> <a href="https://ieeexplore.ieee.org/document/9956683">https://ieeexplore.ieee.org/document/9956683</a></li>    
+       <li><strong>Link to the pre-print:</strong> <a href="https://arxiv.org/pdf/2203.15835.pdf">https://arxiv.org/pdf/2203.15835.pdf</a></li>
+    </ul>
+    
+    </div>
+    
+
+</body>
+
+</html>
