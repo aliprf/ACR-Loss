@@ -1,5 +1,7 @@
 # [ACR-Loss](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=96lS6HIAAAAJ&citation_for_view=96lS6HIAAAAJ:eQOLeE2rZwMC)
 
+### https://aliprf.github.io/ACR-Loss/
+
 ### Accepted in ICPR 2022
 ACR Loss: Adaptive Coordinate-based Regression Loss for Face Alignment
 
